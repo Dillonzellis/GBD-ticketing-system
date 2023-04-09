@@ -1,6 +1,6 @@
 import Button from "./components/Button";
 
-export default function Home() {
+const Home = () => {
   return (
     <main className="mx-auto mt-12 max-w-[600px] space-y-8 border p-4 text-white">
       <h1 className="text-2xl">Client Name</h1>
@@ -19,4 +19,6 @@ export default function Home() {
       </button>
     </main>
   );
-}
+};
+
+export default Home;
