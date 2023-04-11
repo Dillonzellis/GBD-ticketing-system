@@ -1,10 +1,24 @@
 "use client";
 
+import { collection, query } from "firebase/firestore";
 import { signOut, useSession } from "next-auth/react";
+import { useCollection } from "react-firebase-hooks/firestore";
+import { db } from "../../firebase";
 import Button from "./components/Button";
+import TaskID from "./components/TaskID";
 
 const Home = () => {
   const { data: session } = useSession();
+
+  // const [emailId] = useCollection(
+  //   query(collection(db, "users", session?.user?.email!, "userEmail"))
+  // );
+
+  // const emailId = query(
+  //   collection(db, "users", session?.user?.email!)
+  // );
+
+  // console.log(emailId);
 
   return (
     <main className="mx-auto mt-12 max-w-[600px] space-y-8 border p-4 text-white">
@@ -22,6 +36,19 @@ const Home = () => {
       <button className="border-2 p-4" type="submit">
         Submit
       </button>
+
+      <div className="">
+        <TaskID />
+      </div>
+
+      {/* {emailId?.docs.map((doc) => (
+        <div key={doc.id}>email from db {doc.data.name}</div>
+      ))} */}
+
+      {/* {emailId?.docs[emailId?.docs.length - 1]?.data().text} */}
+
+      {/* <div className="">{emailId!}</div> */}
+
       {session && (
         <div className="|">
           <p>Logged in as {session.user?.email}</p>{" "}
