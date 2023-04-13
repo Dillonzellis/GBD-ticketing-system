@@ -5,6 +5,8 @@ import { signOut, useSession } from "next-auth/react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { db } from "../../firebase";
 import Button from "./components/Button";
+import DeleteTask from "./components/DeleteTask";
+import GetTaskList from "./components/GetTaskList";
 import TaskID from "./components/TaskID";
 
 const Home = () => {
@@ -39,6 +41,10 @@ const Home = () => {
 
       <div className="">
         <TaskID />
+      </div>
+
+      <div className="">
+        <GetTaskList />
       </div>
 
       {/* {emailId?.docs.map((doc) => (
