@@ -1,6 +1,7 @@
 "use client";
 
 import { useSession } from "next-auth/react";
+import { AddClient } from "./AddClient";
 import NewTask from "./NewTask";
 
 const AdminPage = () => {
@@ -14,6 +15,7 @@ const AdminPage = () => {
       {/* Add Task Component */}
       {/* <NewTask /> */}
       {/* Add Client Component */}
+      <AddClient />
     </div>
   );
 };
