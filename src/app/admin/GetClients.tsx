@@ -23,7 +23,7 @@ const GetClients = () => {
     <div>
       <button onClick={handleGetClients}>Get Clients</button>
       {clientList.map((client: Client, index: number) => (
-        <div key={index}>
+        <div key={index} className="pb-8">
           <div>Client Name: {client.clientName}</div>
           <div>Project Number: {client.projectNumber}</div>
           <div>Monthly Hours: {client.monthlyHours}</div>
