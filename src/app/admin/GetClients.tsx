@@ -1,5 +1,5 @@
 import { collection, getDocs } from "firebase/firestore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { db } from "../../../firebase";
 
 type Client = {
@@ -11,24 +11,34 @@ type Client = {
 const GetClients = () => {
   const [clientList, setClientList] = useState<Client[]>([]);
 
+  useEffect(() => {
+    const fetchClients = async () => {
+      const querySnapshot = await getDocs(collection(db, "clients"));
+      const newClientList = querySnapshot.docs.map((doc) => doc.data() as Client);
+      setClientList(newClientList);
+    };
+
+    fetchClients();
+  }, []);
+
   const handleGetClients = async () => {
     const querySnapshot = await getDocs(collection(db, "clients"));
-
     const newClientList = querySnapshot.docs.map((doc) => doc.data() as Client);
-
     setClientList(newClientList);
   };
-
   return (
     <div>
       <button onClick={handleGetClients}>Get Clients</button>
-      {clientList.map((client: Client, index: number) => (
-        <div key={index} className="pb-8">
-          <div>Client Name: {client.clientName}</div>
-          <div>Project Number: {client.projectNumber}</div>
-          <div>Monthly Hours: {client.monthlyHours}</div>
-        </div>
-      ))}
+      <div>
+        <select className="text-black">
+          <option>Select a client</option>
+          {clientList.map((client: Client, index: number) => (
+            <option key={index} value={client.clientName}>
+              {client.clientName}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 };

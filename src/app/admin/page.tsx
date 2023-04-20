@@ -28,8 +28,8 @@ const AdminPage = () => {
       {/* Recent Task Entries for logged in User */}
       {/* Dropdown for Clients */}
       <div className="space-x-12">
-        <button onClick={handleGetClientClick}> {showGetClients ? "Hide Clients" : "Show Clients"}</button>
-        {showGetClients && <GetClients />}
+        {/* Get Clients Component */}
+        <GetClients />
         {/* Add Client Component */}
         <button onClick={handleAddClientClick}>{showAddClient ? "Hide Form" : "Add Client"}</button>
         {showAddClient && <AddClient />}
