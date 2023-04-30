@@ -27,15 +27,17 @@ const AdminPage = () => {
       <div className="pb-24">Hello {session?.user?.name}</div>
       {/* Recent Task Entries for logged in User */}
       {/* Dropdown for Clients */}
-      <div className="space-x-12">
+      <div className="space-y-12">
         {/* Get Clients Component */}
         <GetClients />
         {/* Add Client Component */}
-        <button onClick={handleAddClientClick}>{showAddClient ? "Hide Form" : "Add Client"}</button>
+        <button onClick={handleAddClientClick}>
+          {showAddClient ? "Hide Form" : "Add Client"}
+        </button>
         {showAddClient && <AddClient />}
+        {/* Add Task Component */}
+        {/* <NewTask /> */}
       </div>
-      {/* Add Task Component */}
-      {/* <NewTask /> */}
     </div>
   );
 };

@@ -11,10 +11,14 @@ type Client = {
 const GetClients = () => {
   const [clientList, setClientList] = useState<Client[]>([]);
 
+  const [selectedClientId, setSelectedClientId] = useState<string | null>(null);
+
   useEffect(() => {
     const fetchClients = async () => {
       const querySnapshot = await getDocs(collection(db, "clients"));
-      const newClientList = querySnapshot.docs.map((doc) => doc.data() as Client);
+      const newClientList = querySnapshot.docs.map(
+        (doc) => doc.data() as Client
+      );
       setClientList(newClientList);
     };
 
@@ -26,11 +30,16 @@ const GetClients = () => {
     const newClientList = querySnapshot.docs.map((doc) => doc.data() as Client);
     setClientList(newClientList);
   };
+
+  const handleSelectClient = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedClientId(event.target.value);
+  };
+
   return (
     <div>
       <button onClick={handleGetClients}>Get Clients</button>
       <div>
-        <select className="text-black">
+        <select className="text-black" onChange={handleSelectClient}>
           <option>Select a client</option>
           {clientList.map((client: Client, index: number) => (
             <option key={index} value={client.clientName}>
@@ -39,6 +48,7 @@ const GetClients = () => {
           ))}
         </select>
       </div>
+      {selectedClientId && <div>Selected client ID: {selectedClientId}</div>}
     </div>
   );
 };
