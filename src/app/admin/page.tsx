@@ -36,7 +36,7 @@ const AdminPage = () => {
         </button>
         {showAddClient && <AddClient />}
         {/* Add Task Component */}
-        {/* <NewTask /> */}
+        <NewTask />
       </div>
     </div>
   );

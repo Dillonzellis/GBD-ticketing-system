@@ -3,6 +3,7 @@ import { useState } from "react";
 import { db } from "../../../firebase";
 
 const AddTask = () => {
+  // update clientDocId to the prop passed from the parent component
   const clientDocId = "5MRSuHGpVH8y4VBUBdPk";
 
   const currentDate = new Date();
@@ -46,7 +47,7 @@ const AddTask = () => {
       <div>Unique ID: {uniqueId}</div>
       {/* Get Current Date */}
       <div>Current Date: {currentDate.toDateString()}</div>
-
+      {/* Add logic to override date if needed */}
       {/* Date Override Input */}
       <div>Date Override</div>
       <div>
