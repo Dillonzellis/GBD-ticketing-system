@@ -2,6 +2,10 @@ import { addDoc, collection } from "firebase/firestore";
 import { useState } from "react";
 import { db } from "../../../firebase";
 
+type AddTaskProps = {
+  selectedClientId: string | null;
+};
+
 const AddTask = () => {
   // update clientDocId to the prop passed from the parent component
   const clientDocId = "5MRSuHGpVH8y4VBUBdPk";

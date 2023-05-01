@@ -8,10 +8,13 @@ type Client = {
   monthlyHours: string;
 };
 
-const GetClients = () => {
-  const [clientList, setClientList] = useState<Client[]>([]);
+type Props = {
+  selectedClientId: string;
+  onClientSelect: (clientId: string | null) => void;
+};
 
-  const [selectedClientId, setSelectedClientId] = useState<string | null>(null);
+const GetClients = ({ selectedClientId, onClientSelect }: Props) => {
+  const [clientList, setClientList] = useState<Client[]>([]);
 
   useEffect(() => {
     const fetchClients = async () => {
@@ -32,14 +35,18 @@ const GetClients = () => {
   };
 
   const handleSelectClient = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedClientId(event.target.value);
+    onClientSelect(event.target.value);
   };
 
   return (
     <div>
       <button onClick={handleGetClients}>Get Clients</button>
       <div>
-        <select className="text-black" onChange={handleSelectClient}>
+        <select
+          className="text-black"
+          onChange={handleSelectClient}
+          value={selectedClientId}
+        >
           <option>Select a client</option>
           {clientList.map((client: Client, index: number) => (
             <option key={index} value={client.clientName}>
