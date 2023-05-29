@@ -15,6 +15,7 @@ export const NewTask = ({ selectedClientId }: NewTaskProps) => {
       {/* Retrieve Client Name */}
       <div className="mb-12">This Months Tasks</div>
       {/* Add Task Component */}
+      {/* @ts-ignore */}
       <AddTask selectedClientId={selectedClientId} />
     </div>
   );

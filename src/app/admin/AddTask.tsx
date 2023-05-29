@@ -6,9 +6,9 @@ type AddTaskProps = {
   selectedClientId: string | null;
 };
 
-const AddTask = () => {
+const AddTask = ({ selectedClientId }: AddTaskProps) => {
   // update clientDocId to the prop passed from the parent component
-  const clientDocId = "5MRSuHGpVH8y4VBUBdPk";
+  const clientDocId = selectedClientId || "";
 
   const currentDate = new Date();
 
@@ -44,6 +44,9 @@ const AddTask = () => {
   return (
     <div className="mb-12 space-y-2">
       <div>AddTask Component</div>
+      {/* Client Name */}
+      {/* Display selected client name */}
+      <div>Client Name: {clientDocId}</div>
       {/* Generate Unique ID */}
       <button onClick={generateUniqueId} className="border-2 p-1">
         Generate ID
